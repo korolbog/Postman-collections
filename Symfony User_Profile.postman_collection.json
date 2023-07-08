@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "88c6f352-a14e-414f-b321-ca975eb2723d",
+		"name": "Symfony User Profile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27657313"
+	},
+	"item": [
+		{
+			"name": "Авторизация в тестового пользователя Johan (получение токена)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Johan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "16d2cd19da",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация в тестового пользователя Spider (получение токена)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Spider",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "b4d68660c4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос user_id Johan с токеном от Johan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос user_id Johan без токена",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 400\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос user_id Johan с токеном от Spider",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 400\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "7bcb8113fc65591cc9cedc49da3ec5b2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://test-stand.gb.ru/api/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Johan - изменения профиля (все поля заполнены)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "KGrgKCye5/Мося сидит.png"
+						},
+						{
+							"key": "firstName",
+							"value": "Сапа",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Тихая",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Johan",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "55784539182",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2022-10-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Johan - изменения профиля (не заполнено одно из обязательных полей)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 400\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"description": "НЕ обязательное поле",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Johan",
+							"description": "САМОЕ обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Johan - изменения профиля (не уникальный логин - Spider)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 400\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"description": "НЕ обязательное поле",
+							"type": "file",
+							"src": "KGrgKCye5/Мося сидит.png"
+						},
+						{
+							"key": "firstName",
+							"value": "Мося",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Сапа",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Spider",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "55784539182",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2022-10-01",
+							"description": "обязательное поле",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Johan - изменения профиля (не заполнено ни одно поле)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Status code is 400\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "3e20e0857f89ff5e1ccf513a31bbc1d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"description": "НЕ обязательное поле",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Johan",
+							"description": "САМОЕ обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"description": "обязательное поле",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/users/profile/15091",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"15091"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
